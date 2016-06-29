@@ -13,28 +13,25 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
+// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace BakedPotato
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainPage : Page
+    public sealed partial class LoadingPage : Page
     {
-        public MainPage()
+        public LoadingPage()
         {
             this.InitializeComponent();
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            if (userBox.Text.Length == 0)
-                return;
-            if (passBox.Password.Length == 0)
-                return;
+            base.OnNavigatedTo(e);
 
-            this.Frame.Navigate(typeof(LoadingPage), new string[] { userBox.Text, passBox.Password });
+            string[] info = (string[])e.Content;
         }
     }
 }
