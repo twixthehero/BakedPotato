@@ -7,14 +7,44 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Button x:Name="button" Content="Login" HorizontalAlignment="Left" Margin="929,447,0,0" VerticalAlignment="Top" Width="168" Click="button_Click"/>
-        <Button x:Name="button1" Content="Register" HorizontalAlignment="Left" Margin="929,572,0,0" VerticalAlignment="Top" Width="168"/>
-        <TextBox x:Name="userBox" HorizontalAlignment="Left" Margin="820,358,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="401"/>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="717,358,0,0" TextWrapping="Wrap" Text="Username\" VerticalAlignment="Top" Height="32" Width="98" TextAlignment="Center"/>
-        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="717,395,0,0" TextWrapping="Wrap" Text="Password\" VerticalAlignment="Top" Height="32" Width="98" TextAlignment="Center"/>
-        <PasswordBox x:Name="passBox" HorizontalAlignment="Left" Margin="820,395,0,0" VerticalAlignment="Top" Width="401"/>
-        <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="929,547,0,0" TextWrapping="Wrap" Text="Need an account?" VerticalAlignment="Top" Width="168" TextAlignment="Center"/>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Padding="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock x:Name="textBlock" Text="Username\" TextAlignment="Center" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <TextBox x:Name="userBox" TextWrapping="NoWrap" Text="" Grid.Row="1" Grid.Column="2" Width="250" Height="35" HorizontalAlignment="Right"/>
+
+        <TextBlock x:Name="textBlock1" Text="Password\" TextAlignment="Center" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <PasswordBox x:Name="passBox" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="250" Height="35" Grid.Row="2" Grid.Column="2"/>
+
+        <Grid Grid.Row="3" Grid.Column="2" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="7*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="loginButton" Content="Login" Click="loginButton_Click" Width="200" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+            <TextBlock x:Name="textBlock2" Text="Need an account?" TextAlignment="Center" Grid.Row="2" Grid.Column="2" VerticalAlignment="Center"/>
+            <Button x:Name="registerButton" Content="Register" Grid.Row="3" Grid.Column="2" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center" Click="registerButton_Click"/>
+        </Grid>
 
     </Grid>
 </Page>

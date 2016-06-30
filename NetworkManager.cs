@@ -11,6 +11,8 @@ namespace BakedPotato
 {
     class NetworkManager
     {
+        private static NetworkManager instance;
+
         private const string ADDRESS = "potato.redcubed.net";
         private const int PORT = 42424;
 
@@ -23,11 +25,38 @@ namespace BakedPotato
 
         private Socket socket;
 
-        public NetworkManager()
+        public static NetworkManager Instance
+        {
+            get
+            {
+                if (instance == null)
+                    instance = new NetworkManager();
+
+                return instance;
+            }
+        }
+
+        public static void DestroyInstance()
+        {
+            if (instance != null)
+            {
+
+            }
+        }
+
+        private NetworkManager()
         {
             socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         }
-
+        /*
+        public bool IsConnecting
+        {
+            get
+            {
+                return _clientDone.
+            }
+        }
+        */
         public string Connect()
         {
             string result = "";

@@ -20,20 +20,21 @@ namespace BakedPotato
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class LoadingPage : Page
+    public sealed partial class RegisterPage : Page
     {
-        public LoadingPage()
+        public RegisterPage()
         {
             this.InitializeComponent();
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        private void registerButton_Click(object sender, RoutedEventArgs e)
         {
-            base.OnNavigatedTo(e);
 
-            string[] info = (string[])e.Parameter;
+        }
 
-            NetworkManager.Instance.Connect();
+        private void backButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(MainPage), null);
         }
     }
 }

@@ -27,7 +27,7 @@ namespace BakedPotato
             this.InitializeComponent();
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void loginButton_Click(object sender, RoutedEventArgs e)
         {
             if (userBox.Text.Length == 0)
                 return;
@@ -35,6 +35,11 @@ namespace BakedPotato
                 return;
 
             this.Frame.Navigate(typeof(LoadingPage), new string[] { userBox.Text, passBox.Password });
+        }
+
+        private void registerButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(RegisterPage), null);
         }
     }
 }
