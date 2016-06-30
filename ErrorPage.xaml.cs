@@ -29,7 +29,14 @@ namespace BakedPotato
 
         private void okButton_Click(object sender, RoutedEventArgs e)
         {
+            Frame.Navigate(typeof(MainPage), null);
+        }
 
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+
+            errBlock.Text = (string)e.Parameter;
         }
     }
 }

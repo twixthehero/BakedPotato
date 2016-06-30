@@ -41,5 +41,14 @@ namespace BakedPotato
         {
             this.Frame.Navigate(typeof(RegisterPage), null);
         }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+
+            userBox.Text = "";
+            passBox.Password = "";
+            NetworkManager.DestroyInstance();
+        }
     }
 }

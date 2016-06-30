@@ -6,6 +6,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Windows.UI.Xaml.Controls;
 
 namespace BakedPotato
 {
@@ -57,34 +58,26 @@ namespace BakedPotato
             }
         }
         */
-        public string Connect()
+
+        public bool Connect()
         {
-            string result = "";
+            SocketError err = SocketError.SocketNotSupported;
 
-            try
+            SocketAsyncEventArgs args = new SocketAsyncEventArgs();
+            args.RemoteEndPoint = new DnsEndPoint(ADDRESS, PORT);
+            args.Completed += (s, e) =>
             {
-                SocketAsyncEventArgs args = new SocketAsyncEventArgs();
-                args.RemoteEndPoint = new DnsEndPoint(ADDRESS, PORT);
-                args.Completed += (s, e) =>
-                {
-                    result = e.SocketError.ToString();
+                err = e.SocketError;
+                _clientDone.Set();
+            };
 
-                    
-                    _clientDone.Set();
-                };
+            _clientDone.Reset();
 
-                _clientDone.Reset();
+            socket.ConnectAsync(args);
 
-                socket.ConnectAsync(args);
+            _clientDone.WaitOne(TIMEOUT_MILLISECONDS);
 
-                _clientDone.WaitOne(TIMEOUT_MILLISECONDS);
-            }
-            catch (Exception e)
-            {
-
-            }
-
-            return result;
+            return err == SocketError.Success;
         }
 
         public void Disconnect()
